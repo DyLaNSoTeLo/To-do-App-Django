@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block nombre %}To do List - Task{% endblock %}
+
+{% block descripcion %}
+    <h1>To do List - Latest Tasks</h1>
+    {% for tarea in tareas %}
+        <div class="tarea">
+            <h2>{{ tarea.nombre }}</h2>
+            <p>{{ tarea.descripcion }}</p>
+            <p class="date">Published on {{ tarea.fecha_creacion }}</p>
+            <a href="{% url 'tarea-detail-template' pk=tarea.id %}">Read more</a>
+        </div>
+    {% endfor %}
+{% endblock %}
