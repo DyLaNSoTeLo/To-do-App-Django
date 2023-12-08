@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block descripcion %}
+  <h2>Tareas Completadas</h2>
+  <ul>
+  {% for tarea in tareas %}
+    <li>{{ tarea.nombre }}</li>
+  {% empty %}
+    <li>No hay tareas completadas.</li>
+  {% endfor %}
+  </ul>
+{% endblock %}
+

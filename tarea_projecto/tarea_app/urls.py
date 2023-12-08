@@ -14,5 +14,6 @@ urlpatterns = [
     path('api/tareas/<int:pk>/', TareaDetailView.as_view(), name='tarea-detail'),
     path('tareas/', task_list, name='tarea-list'),
     path('tareas/<int:pk>/', task_detail, name='tarea-detail-template'),
-    path('tarea/completada/<int:id_tarea>/', views.marcar_completada, name='marcar-completada'),
+    path('tareas/completada/', views.marcar_completadas, name='tareas-completed'),
+    path('tarea/completada/<int:id_tarea>/', views.marcar_completada, name='tarea-completed'),
 ]

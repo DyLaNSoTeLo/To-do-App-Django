@@ -2,33 +2,50 @@ body {
     font-family: Arial, sans-serif;
     margin: 20px;
     padding: 20px;
-    background-color: #312d2d;
+    background-color: #f4f4f4; 
 }
 
 .container {
     max-width: 800px;
     margin: 0 auto;
-    background-color: #949090;
+    background-color: #008080; 
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-    color: #333;
+    color: #ffffff; 
 }
 
 .tarea {
     margin-bottom: 20px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #dfcccc;
     padding-bottom: 10px;
 }
 
 h2 {
-    color: #555;
+    color: #ffffff; 
 }
 
 p.date {
     color: #eebfbf;
     font-style: italic;
+}
+
+/* Añadi media queries para hacer el diseño mas responsive */
+@media (max-width: 600px) {
+    body {
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .tarea {
+        margin-bottom: 10px;
+        padding-bottom: 5px;
+    }
 }

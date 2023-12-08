@@ -48,7 +48,9 @@ def task_detail(request, pk):
     return render(request, 'task_detail.html', {'tarea': tarea})
 
 def marcar_completada(request, id_tarea):
-    tarea = Tarea.objects.get(id=id_tarea)
-    tarea.completada = True
-    tarea.save()
-    return redirect(request, 'tarea/completada/<int:id_tarea>/', {'tarea': tarea})
+    tarea = Tarea.objects.filter(id=id_tarea, completada=True)
+    return render(request, 'task_completed.html', {'tarea': tarea})
+
+def marcar_completadas(request):
+    tareas = Tarea.objects.filter(completada=True)
+    return render(request, 'task_completed.html', {'tareas': tareas})
