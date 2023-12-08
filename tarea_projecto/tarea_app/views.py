@@ -1,9 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.decorators.csrf import csrf_protect
-from rest_framework.decorators import action
+from rest_framework.decorators import action 
 from rest_framework.response import Response
 from rest_framework import viewsets
-from rest_framework import generics, permissions # ahroa importamos permissions
+from rest_framework import generics, permissions # ahora importamos permissions
 from .serializers import TareaSerializer
 from .models import Tarea
 
@@ -18,7 +18,7 @@ class TareaViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
     
     @action(detail=False, methods=['POST'])
-    @csrf_protect
+    @csrf_protect 
     def crear_tarea_personalizada(self, request):
         # Asumiendo que los datos de la nueva tarea se envían en el cuerpo de la solicitud.
         serializer = self.get_serializer(data=request.data)
@@ -43,17 +43,17 @@ class TareaDetailView(generics.RetrieveUpdateDestroyAPIView):
 
 def task_list(request):
     tareas = Tarea.objects.all()
-    return render(request, 'task_list.html', {'tareas': tareas})
+    return render(request, 'task_list.html', {'tareas': tareas}) # Nos devuelve una lista de las tareas
 
 def task_detail(request, pk):
     tarea = get_object_or_404(Tarea, pk=pk)
-    return render(request, 'task_detail.html', {'tarea': tarea})
+    return render(request, 'task_detail.html', {'tarea': tarea}) # Nos muestra detalles de una tarea
 
 def marcar_completada(request, id_tarea):
     tarea = Tarea.objects.filter(id=id_tarea, completada=True)
-    return render(request, 'task_completed.html', {'tarea': tarea})
+    return render(request, 'task_completed.html', {'tarea': tarea}) # Nos muestra una tarea especifica completada
 
 @csrf_protect
 def marcar_completadas(request):
     tareas = Tarea.objects.filter(completada=True)
-    return render(request, 'task_completed.html', {'tareas': tareas})
+    return render(request, 'task_completed.html', {'tareas': tareas}) # Nos muestra todas las tareas completadas
